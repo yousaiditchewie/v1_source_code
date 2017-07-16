@@ -9,3 +9,16 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
 });
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var jacob = {
+    name: "Jacob A",
+    email: "Highway 37",
+    password: "abc123",
+  };
+  db.collection("customers").insertOne(jacob, function(err, res) {
+    if (err) throw err;
+    console.log(`user: ${jacob.name} inserted`);
+    db.close();
+  });
+});
